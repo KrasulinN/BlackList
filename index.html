@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Угадай число</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="libs/idb.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Угадай число</h1>
+        <button class="button" id="startGame">Начать новую игру</button>
+        <button class="button" id="viewAllGames">Посмотреть все игры</button>
+        <button class="button" id="viewAllWins">Посмотреть все победы</button>
+        <button class="button" id="viewAllLosses">Посмотреть все поражения</button>
+        <button class="button" id="viewStatistics">Посмотреть статистику</button>
+        <button class="button" id="viewGameRecord">Посмотреть запись игры</button>
+        <button class="button" id="help">Помощь</button>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('startGame').addEventListener('click', function() {
+            window.location.href = 'gameSetup.html';
+        });
+
+        document.getElementById('viewAllGames').addEventListener('click', function() {
+            getAllGames().then(function(games) {
+                console.log('Все игры:', games);
+                // TODO: Display games in the UI
+            });
+        });
+
+        document.getElementById('viewAllWins').addEventListener('click', function() {
+            getAllWins().then(function(wins) {
+                console.log('Все победы:', wins);
+                // TODO: Display wins in the UI
+            });
+        });
+
+        document.getElementById('viewAllLosses').addEventListener('click', function() {
+            getAllLosses().then(function(losses) {
+                console.log('Все поражения:', losses);
+                // TODO: Display losses in the UI
+            });
+        });
+
+        document.getElementById('viewStatistics').addEventListener('click', function() {
+            getStatistics().then(function(statistics) {
+                console.log('Статистика:', statistics);
+                // TODO: Display statistics in the UI
+            });
+        });
+
+        document.getElementById('viewGameRecord').addEventListener('click', function() {
+            // TODO: Implement view game record functionality
+        });
+
+        document.getElementById('help').addEventListener('click', function() {
+            // TODO: Implement help functionality
+        });
+    </script>
+</body>
+</html>
