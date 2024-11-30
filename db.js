@@ -51,3 +51,9 @@ export async function getStatistics() {
         totalLosses: allLosses.length
     };
 }
+
+// Получение игры по идентификатору
+export async function getGameById(id) {
+    const db = await openDatabase();
+    return await db.get('games', id);
+}
