@@ -49,11 +49,17 @@
             gameInfo.textContent = `Игрок: ${game.playerName}, Исход: ${game.result}, Дата: ${new Date(game.date).toLocaleString()}`;
             gameActions.innerHTML = '';
 
-            game.actions.forEach(action => {
+            if (game.actions) {
+                game.actions.forEach(action => {
+                    const li = document.createElement('li');
+                    li.textContent = `Ввод: ${action.guess}, Ответ: ${action.response}`;
+                    gameActions.appendChild(li);
+                });
+            } else {
                 const li = document.createElement('li');
-                li.textContent = `Ввод: ${action.guess}, Ответ: ${action.response}`;
+                li.textContent = 'Действия не найдены';
                 gameActions.appendChild(li);
-            });
+            }
 
             gameDetails.style.display = 'block';
         }
