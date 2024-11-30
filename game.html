@@ -17,8 +17,9 @@
         <p id="message"></p>
     </div>
 
-    <script src="script.js"></script>
-    <script>
+    <script type="module">
+        import { saveGameResult } from './db.js';
+
         const maxNumber = parseInt(localStorage.getItem('maxNumber'));
         const attempts = parseInt(localStorage.getItem('attempts'));
         const playerName = localStorage.getItem('playerName');
@@ -73,7 +74,7 @@
                 actions: gameActions
             };
 
-            saveToIndexedDB(gameResult);
+            saveGameResult(gameResult);
         }
     </script>
 </body>
