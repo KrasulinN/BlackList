@@ -23,7 +23,7 @@
     </div>
 
     <script type="module">
-        import { getGameById } from './db.js';
+        import { getAllGames, getGameById } from './db.js';
 
         document.getElementById('backButton').addEventListener('click', function() {
             window.location.href = 'index.html';
@@ -49,11 +49,13 @@
             gameInfo.textContent = `Игрок: ${game.playerName}, Исход: ${game.result}, Дата: ${new Date(game.date).toLocaleString()}`;
             gameActions.innerHTML = '';
 
-            game.actions.forEach(action => {
-                const li = document.createElement('li');
-                li.textContent = `Ввод: ${action.guess}, Ответ: ${action.response}`;
-                gameActions.appendChild(li);
-            });
+            // Здесь можно добавить логику для отображения всех действий, совершенных во время игры
+            // Например, если у вас есть массив действий в объекте game, вы можете их отобразить
+            // game.actions.forEach(action => {
+            //     const li = document.createElement('li');
+            //     li.textContent = action;
+            //     gameActions.appendChild(li);
+            // });
 
             gameDetails.style.display = 'block';
         }
