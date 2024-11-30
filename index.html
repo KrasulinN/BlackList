@@ -38,10 +38,8 @@
             window.location.href = 'allLosses.html';
         });
 
-        document.getElementById('viewStatistics').addEventListener('click', async function() {
-            const statistics = await getStatistics();
-            console.log('Статистика:', statistics);
-            // TODO: Display statistics in the UI
+        document.getElementById('viewStatistics').addEventListener('click', function() {
+            window.location.href = 'statistics.html';
         });
 
         document.getElementById('viewGameRecord').addEventListener('click', function() {
