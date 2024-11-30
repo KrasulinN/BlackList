@@ -26,10 +26,8 @@
             window.location.href = 'gameSetup.html';
         });
 
-        document.getElementById('viewAllGames').addEventListener('click', async function() {
-            const games = await getAllGames();
-            console.log('Все игры:', games);
-            // TODO: Display games in the UI
+        document.getElementById('viewAllGames').addEventListener('click', function() {
+            window.location.href = 'allGames.html';
         });
 
         document.getElementById('viewAllWins').addEventListener('click', async function() {
