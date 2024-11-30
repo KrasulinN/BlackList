@@ -30,16 +30,12 @@
             window.location.href = 'allGames.html';
         });
 
-        document.getElementById('viewAllWins').addEventListener('click', async function() {
-            const wins = await getAllWins();
-            console.log('Все победы:', wins);
-            // TODO: Display wins in the UI
+        document.getElementById('viewAllWins').addEventListener('click', function() {
+            window.location.href = 'allWins.html';
         });
 
-        document.getElementById('viewAllLosses').addEventListener('click', async function() {
-            const losses = await getAllLosses();
-            console.log('Все поражения:', losses);
-            // TODO: Display losses in the UI
+        document.getElementById('viewAllLosses').addEventListener('click', function() {
+            window.location.href = 'allLosses.html';
         });
 
         document.getElementById('viewStatistics').addEventListener('click', async function() {
