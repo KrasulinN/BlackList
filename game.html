@@ -25,6 +25,7 @@
         const playerName = localStorage.getItem('playerName');
         const targetNumber = Math.floor(Math.random() * maxNumber) + 1;
         let remainingAttempts = attempts;
+        let gameActions = [];
 
         document.getElementById('gameInfo').innerText = `Игрок: ${playerName}, Попытки: ${remainingAttempts}, Диапазон: 1-${maxNumber}`;
 
@@ -38,6 +39,7 @@
             }
 
             remainingAttempts--;
+            gameActions.push({ guess, response: guess < targetNumber ? 'больше' : 'меньше' });
 
             if (guess === targetNumber) {
                 messageElement.innerText = 'Поздравляем! Вы угадали число!';
@@ -46,7 +48,8 @@
                     maxNumber: maxNumber,
                     attempts: attempts,
                     result: 'win',
-                    date: new Date().toISOString()
+                    date: new Date().toISOString(),
+                    actions: gameActions
                 });
                 showBackButton();
             } else if (remainingAttempts === 0) {
@@ -56,7 +59,8 @@
                     maxNumber: maxNumber,
                     attempts: attempts,
                     result: 'lose',
-                    date: new Date().toISOString()
+                    date: new Date().toISOString(),
+                    actions: gameActions
                 });
                 showBackButton();
             } else {
