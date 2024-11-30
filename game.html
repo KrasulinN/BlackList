@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Игра "Угадай число"</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="libs/idb.js"></script>
+    <script type="module" src="game.js"></script>
 </head>
 <body>
     <div class="container">
@@ -25,11 +25,10 @@
         const playerName = localStorage.getItem('playerName');
         const targetNumber = Math.floor(Math.random() * maxNumber) + 1;
         let remainingAttempts = attempts;
-        let gameActions = [];
 
         document.getElementById('gameInfo').innerText = `Игрок: ${playerName}, Попытки: ${remainingAttempts}, Диапазон: 1-${maxNumber}`;
 
-        document.getElementById('guessButton').addEventListener('click', function() {
+        document.getElementById('guessButton').addEventListener('click', async function() {
             const guess = parseInt(document.getElementById('guessInput').value);
             const messageElement = document.getElementById('message');
 
@@ -39,28 +38,25 @@
             }
 
             remainingAttempts--;
-            gameActions.push({ guess, response: guess < targetNumber ? 'больше' : 'меньше' });
 
             if (guess === targetNumber) {
                 messageElement.innerText = 'Поздравляем! Вы угадали число!';
-                saveGameResult({
+                await saveGameResult({
                     playerName: playerName,
                     maxNumber: maxNumber,
                     attempts: attempts,
                     result: 'win',
-                    date: new Date().toISOString(),
-                    actions: gameActions
+                    date: new Date().toISOString()
                 });
                 showBackButton();
             } else if (remainingAttempts === 0) {
                 messageElement.innerText = `К сожалению, вы проиграли. Правильное число было ${targetNumber}`;
-                saveGameResult({
+                await saveGameResult({
                     playerName: playerName,
                     maxNumber: maxNumber,
                     attempts: attempts,
                     result: 'lose',
-                    date: new Date().toISOString(),
-                    actions: gameActions
+                    date: new Date().toISOString()
                 });
                 showBackButton();
             } else {
