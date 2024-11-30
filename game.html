@@ -43,11 +43,25 @@
 
             if (guess === targetNumber) {
                 messageElement.innerText = 'Поздравляем! Вы угадали число!';
-                saveGameResult('win');
+                saveGameResult({
+                    playerName: playerName,
+                    maxNumber: maxNumber,
+                    attempts: attempts,
+                    result: 'win',
+                    date: new Date().toISOString(),
+                    actions: gameActions
+                });
                 showBackButton();
             } else if (remainingAttempts === 0) {
                 messageElement.innerText = `К сожалению, вы проиграли. Правильное число было ${targetNumber}`;
-                saveGameResult('lose');
+                saveGameResult({
+                    playerName: playerName,
+                    maxNumber: maxNumber,
+                    attempts: attempts,
+                    result: 'lose',
+                    date: new Date().toISOString(),
+                    actions: gameActions
+                });
                 showBackButton();
             } else {
                 document.getElementById('gameInfo').innerText = `Игрок: ${playerName}, Попытки: ${remainingAttempts}, Диапазон: 1-${maxNumber}`;
@@ -62,19 +76,6 @@
         function showBackButton() {
             document.getElementById('guessButton').style.display = 'none';
             document.getElementById('backButton').style.display = 'block';
-        }
-
-        function saveGameResult(result) {
-            const gameResult = {
-                playerName: playerName,
-                maxNumber: maxNumber,
-                attempts: attempts,
-                result: result,
-                date: new Date().toISOString(),
-                actions: gameActions
-            };
-
-            saveGameResult(gameResult);
         }
     </script>
 </body>
